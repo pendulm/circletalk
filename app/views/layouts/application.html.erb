@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Circletalk</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <p>
+  <% if @account.id %>
+    <%= @account.name %>|<%= link_to 'Logout', logout_path, { :method => :delete }  %>
+  <% else %>
+    <%= link_to 'Login', login_path %>|<%= link_to 'Signup', signup_path %>
+  <% end %>
+  </p>
+  <% if notice %>
+    <p id="notice"><%= notice %><p>
+  <% end %>
+<%= yield %>
+
+</body>
+</html>

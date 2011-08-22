@@ -1,0 +1,11 @@
+<%= form_tag('/topics') do %>
+  <div class="field">
+    <%= hidden_field_tag :forum, @forum.id %>
+  </div>
+  <div class="field">
+    <%= text_area_tag :post_content %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "create topic" %>
+  </div>
+<% end %>

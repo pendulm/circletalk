@@ -1,0 +1,11 @@
+<%= form_tag('/post') do %>
+  <div class="field">
+    <%= hidden_field_tag :topic, @topic.id %>
+  </div>
+  <div class="field">
+    <%= text_area_tag :content %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "add post" %>
+  </div>
+<% end %>

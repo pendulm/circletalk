@@ -1,0 +1,7 @@
+<p><%= list_path_helper(@forum.get_path_include_self) %></p>
+<table>
+  <% @topic.posts.each do |p| %>
+    <tr><%= p.content %></tr>
+  <% end %>
+</table>
+<p><%= link_to 'Add Post', postadd_topic_path %></p>
