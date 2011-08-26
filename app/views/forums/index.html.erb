@@ -1,13 +1,13 @@
 <h1>Listing forums</h1>
 
-<% @forums.each do |forum| %>
-<p>
-    <td><%= forum.id %></td>
-    <td><%= link_to forum.name, forum %></td>
-    <td><%= forum.parent.name if not forum.parent_id.nil? %></td>
-    <td><%= link_to 'Edit', edit_forum_path(forum) %></td>
-    <td><%= link_to 'Destroy', forum, :confirm => 'Are you sure?', :method => :delete %></td>
-</p>
+<% Forum.build_tree.each do |forum, l| %>
+  <p>
+  <%= "|-" * l %>
+  <%= "#{forum.id}" %>
+  <%= link_to forum.name, forum %>
+  <%= link_to 'Edit', edit_forum_path(forum) %>
+  <%= link_to 'Destroy', forum, :confirm => 'Are you sure?', :method => :delete %>
+  </p>
 <% end %>
 
 <br />

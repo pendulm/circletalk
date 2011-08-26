@@ -19,4 +19,22 @@ class Forum < ActiveRecord::Base
     path_list = get_path
     path_list << self
   end
+
+  def self.build_tree
+    start = find_all_by_parent_id(nil)
+    generate_list = []
+
+    treefy = lambda do |node, l|
+      generate_list.push([node, l])
+      node.childs.each do |c|
+       treefy.call(c, l + 1)
+      end
+    end 
+
+    start.each do |s|
+      treefy.call(s, 0)
+    end
+    
+    generate_list
+  end
 end
